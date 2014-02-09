@@ -4,7 +4,9 @@ var password = document.getElementById('password').value;
 var hasNumber = false;
 var hasLowerCase = false;
 var hasUpperCase = false;
-var res = "";
+var clickable = false;
+var ret1 ="";
+var ret2= "";
 if( password.length >= 8 ){
 	for( var i = 0; i< password.length; i++){
 	if ( ! isNaN(password[i]) ){
@@ -23,20 +25,28 @@ if( password.length >= 8 ){
 	}
 }
 	if( hasNumber && hasLowerCase && hasUpperCase ){
-		res = "Password is good. <br>";
+		ret1 = "Password is good. <br>";
+		clickable = true;
 	}
 	if( !hasNumber ){
-		res = "Password needs a number. <br>";
+		ret2 = "Password needs a number. <br>";
 	}
 	if( !hasLowerCase ) {
-		res = res + "Password needs a lower case letter. <br>";
+		ret2 = ret2 + "Password needs a lower case letter. <br>";
 	}
 	if( !hasUpperCase ) {
-		res = res + "Password needs an upper case letter.";
+		ret2 = ret2 + "Password needs an upper case letter.";
 	}
 }
 else{
-		res = "Password must be 8 characters or more.";
+		ret2 = "Password must be 8 characters or more.";
 }
-document.getElementById("demo").innerHTML=res;
+if( clickable){
+document.getElementById("btn1").disabled = false;
+}
+else{
+document.getElementById("btn1").disabled = true;
+}
+document.getElementById("Perfect").innerHTML= ret1;
+document.getElementById("Issues").innerHTML=ret2;
 }
