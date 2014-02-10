@@ -12,7 +12,7 @@ function GetConnection()
 {
 	global $password;
 	$conn = new mysqli('localhost','root', $password, 'test');
-	if($conn->connect_errno > 0){
+	if($conn->connect_errno){
 		die('Unable to connect to database [' . $conn->connect_error . ']');
 }
 	
@@ -20,8 +20,9 @@ function GetConnection()
 }
 function Get($id)
 	{
+	
 	$conn = GetConnection();
-	$results = $conn->query("SELECT * FROM bad_password WHERE pname='$id'");
+	$results = $conn->query("SELECT * FROM bad_password WHERE pname='mysqli_real_escape_string($id)'");
 	$row = $results->fetch_assoc();
 	$conn->close();
 	return $row;
@@ -37,7 +38,7 @@ function Get($id)
 <input name = "password" id="password"type="text" onkeyup="myFunction()" />
 <input id = "btn1" class="btn" type="submit" value="test" />
 </form>
-<script src="/PWSubmit/javascripts/passwordVerify.js"></script>
+<script src="/PWSubmit/scripts/passwordVerify.js"></script>
 <p id="Perfect" class="good"></p>
 <p id="Issues" class="bad"></p>
 <?php
