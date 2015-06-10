@@ -1,12 +1,14 @@
-
-
 <!DOCTYPE html>
+
 <html>
-<head>
-<head>
-<link rel="stylesheet" type="text/css" href="/PWSubmit/stylesheets/main.css">
-</head>
-<?php
+	<head>
+		<title>Password Validator</title>
+		
+		<link type="text/css" rel="stylesheet" href="stylesheets/index.css"/>
+		<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Source+Sans+Pro|Roboto+Condensed|Oxygen"/>
+		<script src="scripts/passwordVerify.js"></script>
+		
+		<?php
 require_once( __DIR__. '/static/password.php');
 function GetConnection()
 {
@@ -29,16 +31,26 @@ function Get($id)
 			
         }
 ?>
-</head>
-<body>
-
-
+	</head>
+	<body>
+<!---------------------------------Navbar--------------------------------------->	
+		<div class="navbar_container">
+			<div class="header"><strong>Password Validator</strong><br></div>
+					<div class="button_list">	
+						<ul>
+							<li>	<a href="index.html" class="navbar_home" alt="Home"> Home </a>  </li>
+							
+						</ul>
+					</div>
+<!---------------------------------Content--------------------------------------->					
+			<div class="main_content_container">
+			
 <p>Create a Password with atleast 8 characters, a lower case letter, an upper case letter and a number.</p>
 <form class="form-inline" action="/PWSubmit/testscript.php" method="post">
 <input name = "password" id="password"type="text" onkeyup="myFunction()" />
 <input id = "btn1" class="btn" type="submit" value="test" />
 </form>
-<script src="/PWSubmit/scripts/passwordVerify.js"></script>
+
 <p id="Perfect" class="good"></p>
 <p id="Issues" class="bad"></p>
 <?php
@@ -55,5 +67,9 @@ function Get($id)
       }
     ?>
 
-</body>
+			</div>
+			</div>
+	</body>
 </html>
+
+
